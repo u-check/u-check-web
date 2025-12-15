@@ -1,7 +1,6 @@
 import Image from "next/image";
 import AmortizationCalculator from "@/components/calculators/AmortizationCalculator";
 import UgCalculator from "@/components/calculators/UgCalculator";
-import MoleculeAnimation from "@/components/MoleculeAnimation";
 import { InlineMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
 
@@ -15,12 +14,9 @@ export default function Home() {
       <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/90 backdrop-blur-md">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
           <div className="flex items-center gap-3">
-            <div className="relative h-8 w-8 overflow-hidden rounded-lg bg-slate-900">
-               <Image src="/u-check-mark.png" alt="U-Check" fill className="object-cover" />
+            <div className="relative h-10 w-40">
+               <Image src="/u-check-logo.png" alt="U-Check" fill className="object-contain object-left" />
             </div>
-            <span className="font-heading text-lg font-bold tracking-tight text-slate-900">
-              U-Check
-            </span>
           </div>
 
           <nav className="hidden items-center gap-8 text-sm font-medium text-slate-600 md:flex">
@@ -217,8 +213,8 @@ export default function Home() {
       </section>
 
       {/* 7) Interaktive Tools */}
-      <section id="rechner" className="py-20 bg-slate-50">
-        <div className="mx-auto max-w-7xl px-6 space-y-20">
+      <section id="rechner" className="bg-slate-50 py-12 md:py-20">
+        <div className="mx-auto max-w-7xl px-6 space-y-12 md:space-y-20">
             
             {/* 7A) Amortisation */}
             <div>
@@ -230,13 +226,8 @@ export default function Home() {
                         Dieser Rechner zeigt, wie sich U-Wert, Fläche und Standortkennwerte in jährliche Energie- und Kosteneffekte übersetzen. Er dient als Orientierung und macht transparent, warum der Ist-U-Wert der entscheidende Unsicherheitsfaktor ist.
                     </p>
                 </div>
-                <div className="grid lg:grid-cols-3 gap-8">
-                    <div className="lg:col-span-2">
-                        <AmortizationCalculator />
-                    </div>
-                    <div className="lg:col-span-1 flex flex-col justify-center">
-                        <MoleculeAnimation />
-                    </div>
+                <div className="w-full">
+                    <AmortizationCalculator />
                 </div>
             </div>
 
@@ -256,7 +247,7 @@ export default function Home() {
       </section>
 
       {/* Team & Partner Section */}
-      <section id="team" className="py-20">
+      <section id="team" className="py-12 md:py-20">
         <div className="mx-auto max-w-7xl px-6">
             <div className="text-center mb-16">
                 <h2 className="font-heading text-3xl font-bold text-slate-900">
@@ -281,7 +272,7 @@ export default function Home() {
                             <h4 className="font-bold text-slate-900 text-lg">Christoph Hauser</h4>
                             <p className="text-sm text-[var(--uc-blue)] font-medium mb-2">Co-Founder</p>
                             <p className="text-sm text-slate-600 leading-relaxed">
-                                Seit meiner Jugend faszinieren mich physikalische sowie technische Lösungen und deren praktische Umsetzung. Dieser Weg führte mich von der IT-Schule über den Bachelor in Bauphysik zu meinem aktuellen Masterstudium in Gebäudephysik. Meine Leidenschaft ist es, Dinge tiefgreifend zu verstehen und dieses theoretische Wissen in praktische Lösungen umzusetzen. Gebäude, Energieeffizienz, Zahlen und Fakten aber auch Verkauf und Marketing sind meine Leidenschaft. Daher freue ich mich das jetzt alles zusammengekommen ist und ich mit meinem guten Freund Stefan eine spannende neue Technologie in ein echtes Produkt umzusetzen darf.
+                                Seit seiner Jugend faszinieren Christoph physikalische sowie technische Lösungen und deren praktische Umsetzung. Dieser Weg führte ihn von der IT-Schule über den Bachelor in Bauphysik zu seinem aktuellen Masterstudium in Gebäudephysik. Seine Leidenschaft ist es, Dinge tiefgreifend zu verstehen und dieses theoretische Wissen in praktische Lösungen umzusetzen. Gebäude, Energieeffizienz, Zahlen und Fakten aber auch Verkauf und Marketing sind seine Leidenschaft. Er freut sich, dass jetzt alles zusammengekommen ist und er mit seinem guten Freund Stefan eine spannende neue Technologie in ein echtes Produkt umsetzen darf.
                             </p>
                         </div>
                     </div>
@@ -295,7 +286,7 @@ export default function Home() {
                             <h4 className="font-bold text-slate-900 text-lg">Stefan Briem</h4>
                             <p className="text-sm text-[var(--uc-blue)] font-medium mb-2">Co-Founder</p>
                             <p className="text-sm text-slate-600 leading-relaxed">
-                                Schon während meiner Ausbildung zum Mechatroniker bei Bosch und meinem Bachelor in Elektrotechnik habe ich mich auf Sensorik und Entwicklung spezialisiert und parallel unter anderem in einem Startup im Bereich Maschinenbau und Messanwendungen gearbeitet. Seitdem ich meinen Master „Systems Engineering“ abgeschlossen habe, arbeite ich bei ewo Fluid Power GmbH. Dort habe ich die Entwicklung und Fertigung von Elektronik-Komponenten als neues Geschäftsfeld hauptverantwortlich aufgebaut und ein hydraulisches Hubstützsystem für Wohnmobile inklusive Hard- und Software entwickelt. All diese Erfahrungen möchte ich nun bei U-Check einbringen, da mich die Produktidee von Anfang an überzeugt hat.
+                                Schon während seiner Ausbildung zum Mechatroniker bei Bosch und seinem Bachelor in Elektrotechnik hat Stefan sich auf Sensorik und Entwicklung spezialisiert und parallel unter anderem in einem Startup im Bereich Maschinenbau und Messanwendungen gearbeitet. Seitdem er seinen Master „Systems Engineering“ abgeschlossen hat, arbeitet er bei ewo Fluid Power GmbH. Dort hat er die Entwicklung und Fertigung von Elektronik-Komponenten als neues Geschäftsfeld hauptverantwortlich aufgebaut und ein hydraulisches Hubstützsystem für Wohnmobile inklusive Hard- und Software entwickelt. All diese Erfahrungen möchte er nun bei U-Check einbringen, da ihn die Produktidee von Anfang an überzeugt hat.
                             </p>
                         </div>
                     </div>
@@ -323,13 +314,18 @@ export default function Home() {
                         className="group block relative overflow-hidden rounded-xl bg-slate-900 shadow-lg hover:shadow-xl transition"
                     >
                         <div className="aspect-video relative bg-slate-800 flex items-center justify-center">
-                            {/* Placeholder for thumbnail since we don't have the file, using a gradient/icon */}
-                            <div className="absolute inset-0 bg-gradient-to-br from-slate-800 to-slate-900"></div>
+                            <Image 
+                                src="https://img.youtube.com/vi/DY1xTG-Uuq0/maxresdefault.jpg" 
+                                alt="U-Check Pitch Video" 
+                                fill 
+                                className="object-cover opacity-80 group-hover:opacity-100 transition duration-300"
+                            />
+                            <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition"></div>
                             <div className="relative z-10 flex flex-col items-center gap-2">
-                                <div className="h-12 w-12 rounded-full bg-red-600 flex items-center justify-center group-hover:scale-110 transition">
-                                    <svg className="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                <div className="h-14 w-14 rounded-full bg-red-600 flex items-center justify-center shadow-lg group-hover:scale-110 transition">
+                                    <svg className="w-7 h-7 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                                 </div>
-                                <span className="text-white font-medium text-sm">Pitch Video ansehen</span>
+                                <span className="text-white font-bold text-sm drop-shadow-md">Pitch Video ansehen</span>
                             </div>
                         </div>
                     </a>
@@ -348,12 +344,12 @@ export default function Home() {
       </section>
 
       {/* 11) FAQ */}
-      <section id="faq" className="py-20 bg-slate-50">
+      <section id="faq" className="py-12 md:py-20 bg-slate-50">
         <div className="mx-auto max-w-3xl px-6">
             <h2 className="font-heading text-3xl font-bold text-slate-900 text-center mb-12">
                 Häufige Fragen
             </h2>
-            <div className="space-y-6">
+            <div className="space-y-4">
                 {[
                     {
                         q: "Welche Fenster kann U-Check bewerten?",
@@ -380,17 +376,26 @@ export default function Home() {
                         a: "Wir verarbeiten Ihre E-Mail ausschließlich für Warteliste/Launch-Information. Eintragung per Double-Opt-In. Details stehen in der Datenschutzerklärung."
                     }
                 ].map((faq, i) => (
-                    <div key={i} className="bg-white rounded-xl p-6 shadow-sm border border-slate-100">
-                        <h3 className="font-bold text-slate-900 mb-2">{faq.q}</h3>
-                        <p className="text-slate-600 text-sm">{faq.a}</p>
-                    </div>
+                    <details key={i} className="group bg-white rounded-xl shadow-sm border border-slate-100 overflow-hidden">
+                        <summary className="flex cursor-pointer items-center justify-between p-6 font-bold text-slate-900 transition hover:bg-slate-50">
+                            {faq.q}
+                            <span className="ml-4 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-slate-100 text-slate-500 transition group-open:rotate-180 group-open:bg-[var(--uc-blue)] group-open:text-white">
+                                <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </span>
+                        </summary>
+                        <div className="px-6 pb-6 pt-0 text-slate-600 text-sm leading-relaxed">
+                            {faq.a}
+                        </div>
+                    </details>
                 ))}
             </div>
         </div>
       </section>
 
       {/* 12) Warteliste */}
-      <section id="warteliste" className="py-20">
+      <section id="warteliste" className="py-12 md:py-20">
         <div className="mx-auto max-w-xl px-6 text-center">
             <h2 className="font-heading text-3xl font-bold text-slate-900">
                 Zum Produktstart informiert werden.

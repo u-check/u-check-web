@@ -1,8 +1,16 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { InlineMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
+
+interface Particle {
+  id: number;
+  top: string;
+  animationDuration: string;
+  animationDelay: string;
+  opacity: number;
+}
 
 export default function UgCalculator() {
   const [panes, setPanes] = useState<2 | 3>(2);
@@ -10,6 +18,7 @@ export default function UgCalculator() {
   const [szr, setSzr] = useState(16); // mm
   const [lowE, setLowE] = useState(true);
   const [showDetails, setShowDetails] = useState(false);
+  const [particles, setParticles] = useState<Particle[]>([]);
 
   const ugValue = useMemo(() => {
     // Constants and Inputs
@@ -82,6 +91,22 @@ export default function UgCalculator() {
 
     return (1 / R_total).toFixed(2);
   }, [panes, gas, szr, lowE]);
+
+  useEffect(() => {
+    const u = parseFloat(ugValue);
+    // Intensity based on U-Value (assuming standard Delta T of 20K for visualization)
+    const intensity = u * 20; 
+    const count = Math.min(Math.floor(intensity * 1.5), 50); // Cap at 50 for performance
+    
+    const newParticles = Array.from({ length: count }).map((_, i) => ({
+      id: i,
+      top: Math.random() * 100 + '%',
+      opacity: Math.random() * 0.5 + 0.1,
+      animationDuration: Math.max(0.5, 50 / (intensity + 5)) + Math.random() * 0.5 + 's', 
+      animationDelay: Math.random() * 2 + 's'
+    }));
+    setParticles(newParticles);
+  }, [ugValue]);
 
   return (
     <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm md:p-8 text-slate-900">
@@ -162,14 +187,52 @@ export default function UgCalculator() {
           </button>
         </div>
 
-        <div className="mt-6 rounded-xl bg-slate-900 p-5 text-center text-white">
-          <div className="text-xs text-slate-400">Berechneter Ug-Wert</div>
-          <div className="font-heading text-4xl font-bold tracking-tight">
-            {ugValue} <span className="text-lg font-normal text-slate-500">W/m²K</span>
+        <div className="mt-6 relative overflow-hidden rounded-xl bg-slate-900 p-5 text-center text-white">
+          {/* Particles Background */}
+          <div className="absolute inset-0 pointer-events-none">
+             {particles.map((p) => (
+                <div
+                    key={p.id}
+                    className="absolute h-1 w-1 rounded-full bg-white/30"
+                    style={{
+                        top: p.top,
+                        left: '-5%',
+                        opacity: p.opacity,
+                        animation: `flowRight ${p.animationDuration} linear infinite`,
+                        animationDelay: p.animationDelay
+                    }}
+                />
+             ))}
           </div>
-          <div className="mt-2 text-[10px] text-slate-500">
-            Berechnung basiert auf Annahmen; der Ist-Zustand kann abweichen.
+          
+          <div className="relative z-10">
+              <div className="text-xs text-slate-400">Berechneter Ug-Wert</div>
+              <div className="font-heading text-4xl font-bold tracking-tight">
+                {ugValue} <span className="text-lg font-normal text-slate-500">W/m²K</span>
+              </div>
+              <div className="mt-2 text-[10px] text-slate-500">
+                Berechnung basiert auf Annahmen; der Ist-Zustand kann abweichen.
+              </div>
           </div>
+
+          <style jsx>{`
+            @keyframes flowRight {
+                0% {
+                    left: -5%;
+                    opacity: 0;
+                }
+                10% {
+                    opacity: 1;
+                }
+                90% {
+                    opacity: 1;
+                }
+                100% {
+                    left: 105%;
+                    opacity: 0;
+                }
+            }
+          `}</style>
         </div>
 
         <div className="mt-4">

@@ -19,6 +19,9 @@ export const metadata: Metadata = {
   description:
     "U-Check macht den Ist-U-Wert von 2-fach und 3-fach Verglasungen vor Ort messbar. Datengestützte Entscheidungen statt Tabellenwerten. Warteliste mit Double-Opt-In.",
   metadataBase: new URL("https://u-check.online"),
+  icons: {
+    icon: "/u-check-mark.png",
+  },
 };
 
 export default function RootLayout({
