@@ -15,9 +15,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "U-Check – U-Wert-Messung für Verglasungen im Bestand",
+  title: "U-Check – U-Wert von Verglasungen im Bestand messen",
   description:
-    "U-Check ist ein mobiles Messsystem zur In-situ-Bewertung von 2- und 3-fach-Verglasungen. Warteliste mit Double-Opt-In.",
+    "U-Check macht den Ist-U-Wert von 2-fach und 3-fach Verglasungen vor Ort messbar. Datengestützte Entscheidungen statt Tabellenwerten. Warteliste mit Double-Opt-In.",
   metadataBase: new URL("https://u-check.online"),
 };
 
