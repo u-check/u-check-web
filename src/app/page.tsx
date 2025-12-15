@@ -1,65 +1,92 @@
-import Image from "next/image";
-
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <main className="min-h-screen bg-white text-slate-900">
+      <header className="mx-auto max-w-5xl px-6 py-10">
+        <div className="flex items-center justify-between">
+          <div className="text-lg font-semibold">U-Check</div>
+          <nav className="text-sm text-slate-600">
+            <a className="mr-6 hover:text-slate-900" href="#produkt">Produkt</a>
+            <a className="mr-6 hover:text-slate-900" href="#technik">Technik</a>
+            <a className="hover:text-slate-900" href="/waitlist">Warteliste</a>
+          </nav>
+        </div>
+      </header>
+
+      <section className="mx-auto max-w-5xl px-6 pb-14 pt-6">
+        <div className="rounded-2xl border border-slate-200 p-10">
+          <p className="text-sm font-medium text-slate-600">Wissen statt schätzen.</p>
+          <h1 className="mt-3 text-4xl font-semibold tracking-tight">
+            U-Check macht die In-situ-Bewertung von Verglasungen messbar.
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
+          <p className="mt-4 text-lg text-slate-700">
+            Mobiles Messsystem zur Bestimmung des U-Werts von 2- und 3-fach-Verglasungen im Bestand
+            auf Basis von Temperatur-, Wärmefluss- und Lichtsensorik mit dynamischer Auswertung.
+          </p>
+
+          <div className="mt-8 flex flex-wrap gap-3">
             <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+              className="rounded-lg bg-slate-900 px-5 py-3 text-white"
+              href="/waitlist"
             >
-              Templates
-            </a>{" "}
-            or the{" "}
+              Warteliste
+            </a>
             <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+              className="rounded-lg border border-slate-300 px-5 py-3"
+              href="#produkt"
             >
-              Learning
-            </a>{" "}
-            center.
+              Mehr erfahren
+            </a>
+          </div>
+
+          <div className="mt-10 grid gap-4 md:grid-cols-3">
+            <div className="rounded-xl border border-slate-200 p-5">
+              <div className="text-sm font-semibold">Schneller Messaufbau</div>
+              <div className="mt-2 text-sm text-slate-700">
+                Befestigung und Start in kurzer Zeit; Bedienung über lokale Weboberfläche.
+              </div>
+            </div>
+            <div className="rounded-xl border border-slate-200 p-5">
+              <div className="text-sm font-semibold">Dynamische Auswertung</div>
+              <div className="mt-2 text-sm text-slate-700">
+                RC-/Grey-Box-Ansatz zur robusten Interpretation transienter Randbedingungen.
+              </div>
+            </div>
+            <div className="rounded-xl border border-slate-200 p-5">
+              <div className="text-sm font-semibold">Für Praxisentscheidungen</div>
+              <div className="mt-2 text-sm text-slate-700">
+                Ziel: belastbare Kenngrößen für Beratung, Qualitätssicherung und Bestandserfassung.
+              </div>
+            </div>
+          </div>
+
+          <p className="mt-8 text-xs text-slate-500">
+            Hinweis: U-Check befindet sich in aktiver Entwicklung; Validierung und Optimierungen laufen.
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      <section id="produkt" className="mx-auto max-w-5xl px-6 py-12">
+        <h2 className="text-2xl font-semibold tracking-tight">Produkt</h2>
+        <p className="mt-3 text-slate-700">
+          U-Check erfasst Innen- und Außentemperaturen, Wärmefluss und Licht/Sonneneinstrahlung.
+          Daraus wird der Wärmetransport durch die Verglasung dynamisch ausgewertet.
+        </p>
+      </section>
+
+      <section id="technik" className="mx-auto max-w-5xl px-6 pb-16">
+        <h2 className="text-2xl font-semibold tracking-tight">Technik</h2>
+        <p className="mt-3 text-slate-700">
+          Die Auswertung basiert auf einem reduzierten physikalischen Modell (RC-Struktur),
+          dessen Parameter aus Messdaten identifiziert werden. Ziel ist eine robuste Abschätzung
+          unter realen, transienten Randbedingungen.
+        </p>
+      </section>
+
+      <footer className="border-t border-slate-200">
+        <div className="mx-auto max-w-5xl px-6 py-10 text-sm text-slate-600">
+          © {new Date().getFullYear()} U-Check — <a className="underline" href="/waitlist">Warteliste</a>
         </div>
-      </main>
-    </div>
+      </footer>
+    </main>
   );
 }
