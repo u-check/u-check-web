@@ -90,15 +90,29 @@ export default function Home() {
             </div>
 
             <div className="relative mx-auto w-full max-w-lg lg:max-w-none">
-               {/* Abstract Visual / Product Placeholder */}
-               <div className="relative aspect-square overflow-hidden rounded-3xl bg-slate-100 shadow-2xl">
-                  <div className="absolute inset-0 bg-gradient-to-br from-slate-200 to-slate-50"></div>
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="text-slate-400 font-medium">Produktbild / Messsituation</span>
-                    {/* Hier später echtes Bild einfügen */}
+               {/* Hero Visual with Logo and Dots */}
+               <div className="relative aspect-square overflow-hidden rounded-3xl bg-slate-50 shadow-2xl">
+                  {/* Background Dots */}
+                  <div className="absolute inset-0 opacity-30">
+                    <Image src="/u-check-dots.png" alt="" fill className="object-cover" />
                   </div>
                   
-                  {/* Floating Card 1 */}
+                  {/* Gradient Overlay for softness */}
+                  <div className="absolute inset-0 bg-gradient-to-tr from-white/80 via-transparent to-transparent"></div>
+
+                  {/* Main Logo Centered */}
+                  <div className="absolute inset-0 flex items-center justify-center p-12">
+                    <Image 
+                      src="/u-check-logo.png" 
+                      alt="U-Check Logo" 
+                      width={560} 
+                      height={140} 
+                      className="h-auto w-full object-contain drop-shadow-xl"
+                      priority
+                    />
+                  </div>
+                  
+                  {/* Floating Card 1 - Status */}
                   <div className="absolute bottom-8 left-8 right-8 rounded-xl bg-white/90 p-4 shadow-lg backdrop-blur sm:bottom-12 sm:left-12 sm:right-auto sm:w-64">
                     <div className="flex items-center gap-3">
                         <div className="flex h-10 w-10 items-center justify-center rounded-full bg-green-100 text-green-600">
