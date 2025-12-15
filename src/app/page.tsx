@@ -16,7 +16,7 @@ export default function Home() {
         <div className="rounded-2xl border border-slate-200 p-10">
           <p className="text-sm font-medium text-slate-600">Wissen statt schätzen.</p>
           <h1 className="mt-3 text-4xl font-semibold tracking-tight">
-            U-Check macht die In-situ-Bewertung von Verglasungen messbar.
+            U-Check macht die In-situ-Bewertung von Verglasungen messbar!!!
           </h1>
           <p className="mt-4 text-lg text-slate-700">
             Mobiles Messsystem zur Bestimmung des U-Werts von 2- und 3-fach-Verglasungen im Bestand
