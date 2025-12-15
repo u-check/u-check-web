@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 :root{
   --uc-blue:#4F72BB;
   --uc-pink:#E3507A;
