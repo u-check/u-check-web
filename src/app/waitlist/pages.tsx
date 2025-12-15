@@ -1,30 +1,25 @@
 export default function Waitlist() {
   return (
-    <main className="mx-auto max-w-xl px-6 py-16">
-      <h1 className="text-3xl font-semibold tracking-tight">Warteliste</h1>
+    <main className="mx-auto max-w-3xl px-6 py-16">
+      <h1 className="text-3xl font-semibold tracking-tight">U-Check Warteliste</h1>
       <p className="mt-3 text-slate-700">
-        Hinterlassen Sie Ihre E-Mail für Pilot-Updates und Verfügbarkeit.
+        Tragen Sie sich ein und erhalten Sie zum Produktstart eine kurze Information. (Double-Opt-In)
       </p>
 
-      <form className="mt-8 space-y-4">
-        <div>
-          <label className="block text-sm font-medium">E-Mail</label>
-          <input
-            className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"
-            type="email"
-            required
-            placeholder="name@domain.de"
-          />
-        </div>
+      <div className="mt-10 rounded-2xl border border-slate-200 bg-white p-4 md:p-6">
+        <iframe
+          title="U-Check Warteliste Formular"
+          src="https://f0c05fc7.sibforms.com/serve/MUIFAA4lpcjXkUEGTVf5oywjzEyPmngXfoCouO9toVgYboUXSQUHDboq4iX045zXhJWBGyuEYg8tgQcTlu4aRZ0osmTGl4AeNnDYQ5TQbYrOl0EL5tdZET3iBGeBaWhXyyCRbrzkMQK4c5CkdoLExJDPwzA_8NMu3jKTj7yuN9FGO3mlCvVemXgAwCRowwkyx3CFft1nrdOuHDtJ"
+          className="h-[520px] w-full"
+          frameBorder={0}
+          scrolling="auto"
+          allowFullScreen
+        />
+      </div>
 
-        <button className="rounded-lg bg-slate-900 px-5 py-3 text-white" type="submit">
-          Eintragen
-        </button>
-
-        <p className="text-xs text-slate-500">
-          Platzhalter: Als nächster Schritt binden wir ein echtes Lead-Backend (Double-Opt-In) an.
-        </p>
-      </form>
+      <p className="mt-6 text-xs text-slate-500">
+        Hinweis: Ihre Anmeldung wird erst nach Klick auf den Bestätigungslink in der E-Mail aktiv.
+      </p>
     </main>
   );
 }
