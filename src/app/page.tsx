@@ -1,259 +1,313 @@
 import Image from "next/image";
+import AmortizationCalculator from "@/components/calculators/AmortizationCalculator";
+import UgCalculator from "@/components/calculators/UgCalculator";
+import MoleculeAnimation from "@/components/MoleculeAnimation";
 
 const BREVO_IFRAME_SRC =
   "https://f0c05fc7.sibforms.com/serve/MUIFAA4lpcjXkUEGTVf5oywjzEyPmngXfoCouO9toVgYboUXSQUHDboq4iX045zXhJWBGyuEYg8tgQcTlu4aRZ0osmTGl4AeNnDYQ5TQbYrOl0EL5tdZET3iBGeBaWhXyyCRbrzkMQK4c5CkdoLExJDPwzA_8NMu3jKTj7yuN9FGO3mlCvVemXgAwCRowwkyx3CFft1nrdOuHDtJ";
 
 export default function Home() {
   return (
-    <main>
+    <main className="min-h-screen">
       {/* Header */}
-      <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/80 backdrop-blur">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+      <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/90 backdrop-blur-md">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
           <div className="flex items-center gap-3">
-            <Image src="/u-check-mark.png" alt="U-Check" width={34} height={34} priority />
-            <span className="font-heading text-lg font-semibold tracking-tight text-slate-900">
+            <div className="relative h-8 w-8 overflow-hidden rounded-lg bg-slate-900">
+               {/* Placeholder Logo if image fails, or use the image */}
+               <Image src="/u-check-mark.png" alt="U-Check" fill className="object-cover" />
+            </div>
+            <span className="font-heading text-lg font-bold tracking-tight text-slate-900">
               U-Check
             </span>
           </div>
 
-          <nav className="hidden items-center gap-6 text-sm text-slate-600 md:flex">
-            <a className="hover:text-slate-900" href="#produkt">Produkt</a>
-            <a className="hover:text-slate-900" href="#nutzen">Nutzen</a>
-            <a className="hover:text-slate-900" href="#methodik">Methodik</a>
-            <a className="hover:text-slate-900" href="#kontakt">Kontakt</a>
+          <nav className="hidden items-center gap-8 text-sm font-medium text-slate-600 md:flex">
+            <a className="transition hover:text-[var(--uc-blue)]" href="#problem">Problem</a>
+            <a className="transition hover:text-[var(--uc-blue)]" href="#loesung">Lösung</a>
+            <a className="transition hover:text-[var(--uc-blue)]" href="#rechner">Rechner</a>
+            <a className="transition hover:text-[var(--uc-blue)]" href="#faq">FAQ</a>
           </nav>
 
           <a
-            href="#kontakt"
-            className="rounded-xl px-4 py-2 text-sm font-semibold text-white shadow-sm"
-            style={{ background: "linear-gradient(90deg, var(--uc-blue), var(--uc-pink))" }}
+            href="#warteliste"
+            className="rounded-full bg-slate-900 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-slate-800 hover:shadow-lg"
           >
             Warteliste
           </a>
         </div>
       </header>
 
-      {/* Hero */}
-      <section className="relative overflow-hidden">
-        <div className="absolute inset-0 -z-10">
-          <div className="h-full w-full uc-soft" />
-          <div className="absolute inset-0 opacity-35">
-            <Image src="/u-check-dots.png" alt="" fill className="object-cover" priority />
-          </div>
-        </div>
+      {/* Hero Section */}
+      <section className="relative overflow-hidden pt-16 pb-20 md:pt-24 md:pb-32">
+        <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-blue-100 via-white to-white opacity-70"></div>
+        
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
+            <div className="max-w-2xl">
+              <div className="inline-flex items-center rounded-full border border-blue-100 bg-blue-50 px-3 py-1 text-xs font-medium text-blue-800">
+                <span className="mr-2 flex h-2 w-2 rounded-full bg-blue-600"></span>
+                Wissen statt Schätzen
+              </div>
+              
+              <h1 className="font-heading mt-6 text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl md:text-6xl">
+                U-Check misst den <span className="uc-text-gradient">U-Wert</span> von Verglasungen vor Ort.
+              </h1>
+              
+              <p className="mt-6 text-lg leading-relaxed text-slate-600">
+                Schnell, nachvollziehbar, wirtschaftlich. Statt Tabellenwerten und Schätzungen erhältst du belastbare Messdaten zum Ist-Zustand bestehender Fenster — auch dann, wenn Low-E-Schichten altern oder Edelgasfüllungen verloren gehen.
+              </p>
 
-        <div className="mx-auto max-w-6xl px-6 py-16 md:py-20">
-          <div className="max-w-3xl">
-            <Image
-              src="/u-check-logo.png"
-              alt="U-Check"
-              width={560}
-              height={140}
-              className="mb-10 h-auto w-[320px] md:w-[440px]"
-              priority
-            />
+              <div className="mt-8 flex flex-wrap gap-4">
+                <a
+                  href="#warteliste"
+                  className="rounded-xl bg-[var(--uc-blue)] px-8 py-4 text-base font-semibold text-white shadow-lg shadow-blue-200 transition hover:bg-blue-700 hover:shadow-xl"
+                >
+                  In Warteliste eintragen
+                </a>
+                <a
+                  href="#rechner"
+                  className="rounded-xl border border-slate-200 bg-white px-8 py-4 text-base font-semibold text-slate-700 transition hover:border-slate-300 hover:bg-slate-50"
+                >
+                  Rechner testen
+                </a>
+              </div>
 
-            <p className="text-sm font-semibold text-slate-700">Wissen statt schätzen.</p>
-
-            <h1 className="font-heading mt-3 text-4xl font-semibold tracking-tight text-slate-900 md:text-5xl">
-              In-situ-U-Wert-Bewertung von Verglasungen – belastbar, praxisnah, skalierbar.
-            </h1>
-
-            <p className="mt-5 text-lg text-slate-700">
-              U-Check ist ein mobiles Messsystem zur Bewertung von 2- und 3-fach-Verglasungen im Bestand. Temperatur-,
-              Wärmefluss- und Lichtsensorik werden mit einer dynamischen Auswertung kombiniert, um reale Randbedingungen
-              methodisch sauber abzubilden.
-            </p>
-
-            <div className="mt-8 flex flex-wrap gap-3">
-              <a
-                href="#kontakt"
-                className="rounded-xl px-6 py-3 text-sm font-semibold text-white shadow-sm"
-                style={{ background: "linear-gradient(90deg, var(--uc-blue), var(--uc-pink))" }}
-              >
-                Auf die Warteliste
-              </a>
-
-              <a
-                href="#methodik"
-                className="rounded-xl border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-800"
-              >
-                Methodik ansehen
-              </a>
+              <div className="mt-8 space-y-3 border-t border-slate-100 pt-8">
+                {[
+                  "Messung als In-situ-Verfahren unter realen Randbedingungen.",
+                  "Dynamische Auswertung: Störeinflüsse werden genutzt, nicht gefiltert.",
+                  "Fokus auf Praxistauglichkeit: Schneller Aufbau, klare Ergebnisse."
+                ].map((item, i) => (
+                  <div key={i} className="flex items-start gap-3">
+                    <svg className="mt-1 h-5 w-5 flex-shrink-0 text-[var(--uc-pink)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span className="text-sm text-slate-600">{item}</span>
+                  </div>
+                ))}
+              </div>
             </div>
 
-            <p className="mt-4 text-xs text-slate-600">
-              Eintragung per Double-Opt-In; Abmeldung jederzeit möglich.
-            </p>
+            <div className="relative mx-auto w-full max-w-lg lg:max-w-none">
+               {/* Abstract Visual / Product Placeholder */}
+               <div className="relative aspect-square overflow-hidden rounded-3xl bg-slate-100 shadow-2xl">
+                  <div className="absolute inset-0 bg-gradient-to-br from-slate-200 to-slate-50"></div>
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <span className="text-slate-400 font-medium">Produktbild / Messsituation</span>
+                    {/* Hier später echtes Bild einfügen */}
+                  </div>
+                  
+                  {/* Floating Card 1 */}
+                  <div className="absolute bottom-8 left-8 right-8 rounded-xl bg-white/90 p-4 shadow-lg backdrop-blur sm:bottom-12 sm:left-12 sm:right-auto sm:w-64">
+                    <div className="flex items-center gap-3">
+                        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-green-100 text-green-600">
+                            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                        </div>
+                        <div>
+                            <div className="text-xs font-medium text-slate-500">Status</div>
+                            <div className="text-sm font-bold text-slate-900">Messung läuft</div>
+                        </div>
+                    </div>
+                  </div>
+               </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Produkt */}
-      <section id="produkt" className="mx-auto max-w-6xl px-6 py-14">
-        <div className="grid gap-10 md:grid-cols-2 md:items-center">
-          <div>
-            <h2 className="font-heading text-3xl font-semibold tracking-tight text-slate-900">
-              Produktfokus
+      {/* Problem Section */}
+      <section id="problem" className="bg-slate-50 py-20">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="mx-auto max-w-3xl text-center">
+            <h2 className="font-heading text-3xl font-bold text-slate-900 sm:text-4xl">
+              Warum Fensterdaten heute oft unsicher sind
             </h2>
-            <p className="mt-4 text-slate-700">
-              Im Bestand sind Verglasungen häufig energetisch schlechter als angenommen – oder besser als vermutet.
-              U-Check zielt darauf, einzelne Fenster systematisch zu bewerten und Entscheidungen zu Sanierung,
-              Austausch oder Weiterbetrieb auf Messdaten zu stützen.
+            <p className="mt-4 text-lg text-slate-600">
+              Fenster sind energetisch überproportional relevant. Doch im Bestand bleibt der tatsächliche U-Wert oft ein Rätsel.
             </p>
-            <ul className="mt-6 space-y-2 text-slate-700">
-              <li>• Messung unter realen, transienten Randbedingungen</li>
-              <li>• Fokus auf 2-fach und 3-fach Verglasungen</li>
-              <li>• Ergebnis: belastbare Kennwerte für Beratung und Qualitätssicherung</li>
-            </ul>
           </div>
 
-          <div className="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm">
-            <div className="grid gap-4 sm:grid-cols-2">
-              <div className="rounded-2xl border border-slate-200 p-5">
-                <div className="text-sm font-semibold text-slate-900">Sensorik</div>
-                <div className="mt-2 text-sm text-slate-700">
-                  Temperatur innen/außen, Wärmefluss, Licht/Sonneneinstrahlung.
-                </div>
+          <div className="mt-16 grid gap-8 md:grid-cols-3">
+            <div className="rounded-2xl bg-white p-8 shadow-sm transition hover:shadow-md">
+              <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-blue-50 text-blue-600">
+                <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
               </div>
-              <div className="rounded-2xl border border-slate-200 p-5">
-                <div className="text-sm font-semibold text-slate-900">Auswertung</div>
-                <div className="mt-2 text-sm text-slate-700">
-                  Dynamische Identifikation eines reduzierten physikalischen Modells.
-                </div>
+              <h3 className="text-xl font-semibold text-slate-900">Tabellen statt Realität</h3>
+              <p className="mt-3 text-slate-600">
+                Richtwerte nach Baujahr bilden Alterungseffekte nicht ab. Low-E-Schichten können korrodieren, Gasfüllungen entweichen.
+              </p>
+            </div>
+            <div className="rounded-2xl bg-white p-8 shadow-sm transition hover:shadow-md">
+              <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-pink-50 text-pink-600">
+                <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
               </div>
-              <div className="rounded-2xl border border-slate-200 p-5">
-                <div className="text-sm font-semibold text-slate-900">Workflow</div>
-                <div className="mt-2 text-sm text-slate-700">
-                  Messung, Export/Upload, Ergebnisaufbereitung.
-                </div>
+              <h3 className="text-xl font-semibold text-slate-900">Fehlallokation</h3>
+              <p className="mt-3 text-slate-600">
+                Intakte Fenster werden teuer ersetzt, während echte energetische Schwachstellen unentdeckt bleiben.
+              </p>
+            </div>
+            <div className="rounded-2xl bg-white p-8 shadow-sm transition hover:shadow-md">
+              <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-purple-50 text-purple-600">
+                <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>
               </div>
-              <div className="rounded-2xl border border-slate-200 p-5">
-                <div className="text-sm font-semibold text-slate-900">Zielgruppe</div>
-                <div className="mt-2 text-sm text-slate-700">
-                  Bauphysik, Energieberatung, Bestandshalter, QS.
-                </div>
-              </div>
+              <h3 className="text-xl font-semibold text-slate-900">Wirtschaftlichkeit</h3>
+              <p className="mt-3 text-slate-600">
+                Der U-Wert entscheidet über Amortisation. Kleine Abweichungen ändern die Rechnung um Jahre.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Nutzen */}
-      <section id="nutzen" className="py-14">
-        <div className="mx-auto max-w-6xl px-6">
-          <div className="rounded-3xl p-10 md:p-12 uc-soft">
-            <h2 className="font-heading text-3xl font-semibold tracking-tight text-slate-900">
-              Nutzen in der Praxis
+      {/* Solution / How it works */}
+      <section id="loesung" className="py-20">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="grid gap-16 lg:grid-cols-2 lg:items-center">
+            <div>
+              <h2 className="font-heading text-3xl font-bold text-slate-900 sm:text-4xl">
+                Was U-Check konkret macht
+              </h2>
+              <p className="mt-6 text-lg text-slate-600">
+                U-Check ist ein kompaktes Messsystem zur Bestimmung des Wärmedurchgangskoeffizienten. Es erfasst zeitaufgelöst Temperaturen, Wärmestrom und Licht.
+              </p>
+              
+              <div className="mt-8 space-y-8">
+                <div className="flex gap-4">
+                  <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-slate-100 font-bold text-slate-900">1</div>
+                  <div>
+                    <h4 className="font-semibold text-slate-900">Anbringen</h4>
+                    <p className="text-sm text-slate-600">Zwei Sensormodule werden innen und außen positioniert. Reproduzierbarer Kontakt, schneller Aufbau.</p>
+                  </div>
+                </div>
+                <div className="flex gap-4">
+                  <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-slate-100 font-bold text-slate-900">2</div>
+                  <div>
+                    <h4 className="font-semibold text-slate-900">Messen</h4>
+                    <p className="text-sm text-slate-600">Kurze Messphase unter realen Bedingungen. Transiente Effekte werden erfasst.</p>
+                  </div>
+                </div>
+                <div className="flex gap-4">
+                  <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-slate-100 font-bold text-slate-900">3</div>
+                  <div>
+                    <h4 className="font-semibold text-slate-900">Auswerten</h4>
+                    <p className="text-sm text-slate-600">Der Algorithmus identifiziert Parameter (RC-Modell) und liefert den U-Wert inkl. Export.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div className="relative">
+                {/* Animation Component */}
+                <MoleculeAnimation />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Calculators */}
+      <section id="rechner" className="bg-slate-900 py-20 text-white">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="mb-12 text-center">
+            <h2 className="font-heading text-3xl font-bold sm:text-4xl">
+              Interaktive Tools
             </h2>
-            <div className="mt-8 grid gap-4 md:grid-cols-3">
-              <div className="rounded-2xl border border-slate-200 bg-white p-6">
-                <div className="text-sm font-semibold text-slate-900">Bessere Entscheidungen</div>
-                <p className="mt-2 text-sm text-slate-700">
-                  Investitionen dorthin lenken, wo der Effekt nachweislich am größten ist.
-                </p>
-              </div>
-              <div className="rounded-2xl border border-slate-200 bg-white p-6">
-                <div className="text-sm font-semibold text-slate-900">Bestand erfassen</div>
-                <p className="mt-2 text-sm text-slate-700">
-                  Alterungseffekte systematisch sichtbar machen.
-                </p>
-              </div>
-              <div className="rounded-2xl border border-slate-200 bg-white p-6">
-                <div className="text-sm font-semibold text-slate-900">Skalierbar</div>
-                <p className="mt-2 text-sm text-slate-700">
-                  Standardisierte Prozesse für Vergleichbarkeit über viele Objekte.
-                </p>
-              </div>
+            <p className="mt-4 text-slate-400">
+              Verstehe die Physik und die Wirtschaftlichkeit dahinter.
+            </p>
+          </div>
+
+          <div className="grid gap-8 lg:grid-cols-2">
+            <AmortizationCalculator />
+            <UgCalculator />
+          </div>
+        </div>
+      </section>
+
+      {/* Target Group */}
+      <section className="py-20">
+        <div className="mx-auto max-w-7xl px-6">
+          <h2 className="font-heading mb-12 text-center text-3xl font-bold text-slate-900">
+            Für wen ist U-Check gemacht?
+          </h2>
+          <div className="grid gap-8 md:grid-cols-3">
+            <div className="border-l-4 border-[var(--uc-blue)] bg-slate-50 p-6">
+              <h3 className="font-semibold text-slate-900">Energieberatung</h3>
+              <p className="mt-2 text-sm text-slate-600">Objektive Messdaten statt Näherungen; stärkt Nachvollziehbarkeit der Empfehlung.</p>
+            </div>
+            <div className="border-l-4 border-[var(--uc-pink)] bg-slate-50 p-6">
+              <h3 className="font-semibold text-slate-900">Fensterbau & Bestand</h3>
+              <p className="mt-2 text-sm text-slate-600">Klärung, ob tatsächlich ein Defizit vorliegt oder ob andere Maßnahmen priorisiert werden sollten.</p>
+            </div>
+            <div className="border-l-4 border-slate-400 bg-slate-50 p-6">
+              <h3 className="font-semibold text-slate-900">Bauphysik / Gutachten</h3>
+              <p className="mt-2 text-sm text-slate-600">Messdaten als belastbare Ergänzung zu Berechnung und Erfahrung.</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Methodik */}
-      <section id="methodik" className="mx-auto max-w-6xl px-6 py-14">
-        <div className="grid gap-10 md:grid-cols-2">
-          <div>
-            <h2 className="font-heading text-3xl font-semibold tracking-tight text-slate-900">
-              Methodik: dynamisch statt nur stationär
-            </h2>
-            <p className="mt-4 text-slate-700">
-              Reale Randbedingungen sind selten stationär. U-Check setzt daher auf eine dynamische Auswertung, die
-              Transienten explizit berücksichtigt und Modellparameter aus Messdaten identifiziert.
-            </p>
-            <p className="mt-4 text-slate-700">
-              Der Messkopf protokolliert zuverlässig; rechenintensive Identifikation und Unsicherheitsanalyse können
-              extern erfolgen. So bleibt der Messprozess vor Ort schlank, während die Auswertung wissenschaftlich
-              fundiert bleibt.
-            </p>
-          </div>
-
-          <div className="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm">
-            <div
-              className="rounded-2xl p-6 text-white"
-              style={{ background: "linear-gradient(90deg, var(--uc-blue), var(--uc-pink))" }}
-            >
-              <div className="text-sm font-semibold">Technische Kurzform</div>
-              <ul className="mt-3 space-y-2 text-sm">
-                <li>• Modell reduzierter Ordnung (RC/Grey-Box)</li>
-                <li>• Parameteridentifikation aus Zeitreihen</li>
-                <li>• Ergebnisdarstellung mit Unsicherheitsbezug</li>
-              </ul>
-            </div>
-
-            <div className="mt-6 text-sm text-slate-700">
-              Pilotpartner (Beratung/Bestandshalter/Hersteller) profitieren besonders von Vergleichbarkeit,
-              Standardisierung und nachvollziehbaren Messnachweisen.
-            </div>
+      {/* FAQ */}
+      <section id="faq" className="bg-slate-50 py-20">
+        <div className="mx-auto max-w-4xl px-6">
+          <h2 className="font-heading mb-10 text-center text-3xl font-bold text-slate-900">
+            Häufige Fragen
+          </h2>
+          <div className="space-y-4">
+            {[
+              { q: "Welche Fenster/Verglasungen?", a: "Fokus auf 2-fach und 3-fach Verglasungen im Bestand. Sonderfälle folgen später." },
+              { q: "Wie lange dauert eine Messung?", a: "Ziel ist deutlich kürzer als mehrtägige Verfahren. Die genaue Dauer hängt von den Randbedingungen ab." },
+              { q: "Geht das bei Tageslicht?", a: "Ja. Lichtmessung und die Erkennung solarer Einträge sind Teil des Konzepts." },
+              { q: "Wie belastbar ist das Ergebnis?", a: "Wir nutzen ein physikalisches Modell mit Unsicherheitsbetrachtung. Das Ergebnis ist ein Messwert mit Einordnung." },
+              { q: "Was kostet es?", a: "Die Preise sind noch in Finalisierung. Trag dich in die Warteliste ein für Launch-Infos." }
+            ].map((item, i) => (
+              <div key={i} className="rounded-xl bg-white p-6 shadow-sm">
+                <h4 className="font-semibold text-slate-900">{item.q}</h4>
+                <p className="mt-2 text-sm text-slate-600">{item.a}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Kontakt + Brevo */}
-      <section id="kontakt" className="py-16">
-        <div className="mx-auto max-w-6xl px-6">
-          <div className="rounded-3xl border border-slate-200 bg-white p-10 shadow-sm md:p-12">
-            <div className="grid gap-10 md:grid-cols-2 md:items-start">
-              <div>
-                <h2 className="font-contact text-3xl font-semibold tracking-tight text-slate-900">
-                  Kontakt & Warteliste
+      {/* Waitlist / Contact */}
+      <section id="warteliste" className="py-20">
+        <div className="mx-auto max-w-5xl px-6">
+          <div className="overflow-hidden rounded-3xl bg-slate-900 shadow-2xl">
+            <div className="grid md:grid-cols-2">
+              <div className="p-10 md:p-12">
+                <h2 className="font-heading text-3xl font-bold text-white">
+                  Produktstart nicht verpassen.
                 </h2>
-                <p className="mt-4 text-slate-700">
-                  Tragen Sie sich ein und erhalten Sie zum Produktstart eine kurze Information. Die Anmeldung erfolgt
-                  per Double-Opt-In; ohne Bestätigung werden Sie nicht in den Verteiler aufgenommen.
+                <p className="mt-4 text-slate-300">
+                  Trag dich ein und erhalte zum Launch eine kurze E-Mail mit Verfügbarkeit, Preisen und Pilotangeboten. Maximal wenige Nachrichten, jederzeit abmeldbar.
                 </p>
-
-                <div className="mt-6 rounded-2xl border border-slate-200 p-6 uc-soft">
-                  <div className="text-sm font-semibold text-slate-900">Direktkontakt</div>
-                  <p className="mt-2 text-sm text-slate-700">
-                    E-Mail:{" "}
-                    <a className="underline" href="mailto:info@u-check.online">
-                      info@u-check.online
-                    </a>
-                    <br />
-                    Rechtliches:{" "}
-                    <a className="underline" href="/impressum">Impressum</a> ·{" "}
-                    <a className="underline" href="/datenschutz">Datenschutz</a>
+                
+                <div className="mt-8">
+                  <div className="flex items-center gap-4 text-sm text-slate-400">
+                    <div className="h-px flex-1 bg-slate-700"></div>
+                    <span>Status</span>
+                    <div className="h-px flex-1 bg-slate-700"></div>
+                  </div>
+                  <p className="mt-4 text-sm text-slate-300">
+                    U-Check befindet sich in aktiver Entwicklung. Der aktuelle Stand umfasst funktionsfähige Prototypik und Datenerfassung.
                   </p>
                 </div>
-              </div>
 
-              <div className="rounded-2xl border border-slate-200 bg-white p-4 md:p-6">
+                <div className="mt-10 text-xs text-slate-500">
+                  Wir verarbeiten deine E-Mail nur für Launch-Infos. Details in der Datenschutzerklärung.
+                </div>
+              </div>
+              
+              <div className="bg-white p-2">
                 <iframe
                   title="U-Check Warteliste Formular"
                   src={BREVO_IFRAME_SRC}
-                  className="h-[560px] w-full"
+                  className="h-full w-full min-h-[500px]"
                   frameBorder={0}
                   scrolling="auto"
                   allowFullScreen
                 />
-                <p className="mt-3 text-xs text-slate-500">
-                  Datenschutzinformationen:{" "}
-                  <a className="underline" href="/datenschutz">
-                    u-check.online/datenschutz
-                  </a>
-                  .
-                </p>
               </div>
             </div>
           </div>
@@ -261,12 +315,19 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-slate-200 bg-white">
-        <div className="mx-auto flex max-w-6xl flex-col gap-4 px-6 py-10 text-sm text-slate-600 md:flex-row md:items-center md:justify-between">
-          <div>© {new Date().getFullYear()} U-Check</div>
-          <div className="flex gap-4">
-            <a className="hover:text-slate-900" href="/impressum">Impressum</a>
-            <a className="hover:text-slate-900" href="/datenschutz">Datenschutz</a>
+      <footer className="border-t border-slate-200 bg-white py-12">
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 px-6 text-sm text-slate-500 md:flex-row">
+          <div className="flex items-center gap-2">
+            <span className="font-heading font-bold text-slate-900">U-Check</span>
+            <span>— Wissen statt Schätzen.</span>
+          </div>
+          <div className="flex gap-6">
+            <a href="/impressum" className="hover:text-slate-900">Impressum</a>
+            <a href="/datenschutz" className="hover:text-slate-900">Datenschutz</a>
+            <a href="mailto:info@u-check.online" className="hover:text-slate-900">Kontakt</a>
+          </div>
+          <div>
+            © {new Date().getFullYear()} Christoph Hauser
           </div>
         </div>
       </footer>

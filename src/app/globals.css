@@ -5,27 +5,51 @@
   --uc-rose:#F0E7ED;
   --uc-gray:#404040;
 
-  --font-body: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  /* Fix: Use the CSS variables defined in layout.tsx */
+  --font-body: var(--font-inter), "Segoe UI", system-ui, sans-serif;
+  --font-heading: var(--font-space), var(--font-body);
 }
 
 body{
   font-family: var(--font-body);
   color: var(--uc-gray);
   background: #ffffff;
+  overflow-x: hidden; /* Prevent horizontal scroll from animations */
 }
 
 .font-heading{
-  font-family: var(--font-space), var(--font-body);
+  font-family: var(--font-heading);
 }
 
 .font-contact{
-  font-family: var(--font-inter), var(--font-body);
+  font-family: var(--font-body); /* Inter is good for contact too */
 }
 
 .uc-gradient{
   background: linear-gradient(90deg, var(--uc-blue), var(--uc-pink));
 }
 
+.uc-text-gradient {
+  background: linear-gradient(90deg, var(--uc-blue), var(--uc-pink));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .uc-soft{
   background: linear-gradient(90deg, var(--uc-cyan), var(--uc-rose));
+}
+
+/* Custom Scrollbar for a polished look */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
 }
