@@ -5,7 +5,7 @@ export default function Datenschutz() {
 
       <p className="mt-6 text-slate-700">
         Mit dieser Datenschutzerklärung informieren wir über die Verarbeitung personenbezogener Daten beim Besuch
-        dieser Website sowie bei der Eintragung in die U-Check Warteliste.
+        dieser Website sowie bei der Eintragung in die <span className="whitespace-nowrap">U-Check</span> Warteliste.
       </p>
 
       <h2 className="mt-10 text-xl font-semibold">1. Verantwortlicher</h2>

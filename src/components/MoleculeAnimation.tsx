@@ -43,14 +43,14 @@ export default function MoleculeAnimation() {
           <div>
             <h3 className="font-heading text-lg font-bold text-white">Wärmestrom-Simulation</h3>
             <p className="text-xs text-slate-400 mt-1">
-              Visualisierung des Energieverlusts in Abhängigkeit von U-Wert und Temperatur.
+              Visualisierung des Energieverlusts in Abhängigkeit von <span className="whitespace-nowrap">U-Wert</span> und Temperatur.
             </p>
           </div>
 
           <div className="space-y-4">
             <div>
               <div className="mb-1 flex justify-between">
-                <label className="text-xs font-medium text-slate-300">U-Wert</label>
+                <label className="text-xs font-medium text-slate-300 whitespace-nowrap">U-Wert</label>
                 <span className="font-mono text-xs text-[var(--uc-pink)]">{uValue.toFixed(1)} W/m²K</span>
               </div>
               <input

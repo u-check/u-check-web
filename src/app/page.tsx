@@ -1,6 +1,10 @@
 import Image from "next/image";
 import AmortizationCalculator from "@/components/calculators/AmortizationCalculator";
 import UgCalculator from "@/components/calculators/UgCalculator";
+import FadeIn from "@/components/FadeIn";
+import Header from "@/components/Header";
+import HeroWaitlistButton from "@/components/HeroWaitlistButton";
+import WaitlistSectionButton from "@/components/WaitlistSectionButton";
 import { InlineMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
 
@@ -11,52 +15,25 @@ export default function Home() {
   return (
     <main className="min-h-screen font-sans text-slate-900">
       {/* Header */}
-      <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/90 backdrop-blur-md">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-          <div className="flex items-center gap-3">
-            <div className="relative h-10 w-40">
-               <Image src="/u-check-logo.png" alt="U-Check" fill className="object-contain object-left" />
-            </div>
-          </div>
-
-          <nav className="hidden items-center gap-8 text-sm font-medium text-slate-600 md:flex">
-            <a className="transition hover:text-[var(--uc-blue)]" href="#problem">Problem</a>
-            <a className="transition hover:text-[var(--uc-blue)]" href="#loesung">Lösung</a>
-            <a className="transition hover:text-[var(--uc-blue)]" href="#rechner">Rechner</a>
-            <a className="transition hover:text-[var(--uc-blue)]" href="#team">Team</a>
-          </nav>
-
-          <a
-            href="#warteliste"
-            className="rounded-full bg-slate-900 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-slate-800 hover:shadow-lg"
-          >
-            Warteliste
-          </a>
-        </div>
-      </header>
+      <Header />
 
       {/* 1) Hero Section */}
-      <section className="relative overflow-hidden pt-16 pb-20 md:pt-24 md:pb-32">
+      <section className="relative overflow-hidden pt-8 pb-16 md:pt-12 md:pb-24">
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-blue-100 via-white to-white opacity-70"></div>
         
         <div className="mx-auto max-w-7xl px-6">
-          <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
-            <div className="max-w-2xl">
-              <h1 className="font-heading mt-6 text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl md:text-6xl">
-                U-Check macht den Ist-U-Wert messbar.
+          <div className="grid gap-8 lg:grid-cols-2 lg:items-center lg:gap-0">
+            <div className="max-w-2xl relative z-10">
+              <h1 className="font-heading text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl md:text-6xl leading-[1.1] animate-fade-in-up">
+                <span className="whitespace-nowrap">U-Werte</span> von Verglasungen vor Ort einfach und präzise bestimmen.
               </h1>
               
-              <p className="mt-6 text-lg leading-relaxed text-slate-600">
-                Im Bestand entscheiden Eigentümer, Energieberatung und Planung häufig auf Basis von Tabellenwerten oder Baujahrannahmen. Diese sind oft zu ungenau, da Alterungseffekte nicht berücksichtigt werden. U-Check erfasst den realen energetischen Zustand von Verglasungen belastbar vor Ort – für Entscheidungen auf Basis von Daten statt Schätzungen.
+              <p className="mt-8 text-lg leading-relaxed text-slate-600 animate-fade-in-up delay-100 max-w-xl">
+                <span className="whitespace-nowrap">U-Check</span> macht fortschrittlichste Auswertungsmethoden zugänglich, liefert schnell valide Ergebnisse und unterstützt dabei effiziente und fundierte Sanierungsentscheidungen zu treffen. <span className="whitespace-nowrap">U-Check</span> liefert dort präzise Ergebnisse, wo konkurrierende Verfahren kapitulieren.
               </p>
 
-              <div className="mt-8 flex flex-wrap gap-4">
-                <a
-                  href="#warteliste"
-                  className="rounded-xl bg-[var(--uc-blue)] px-8 py-4 text-base font-semibold text-white shadow-lg shadow-blue-200 transition hover:bg-blue-700 hover:shadow-xl"
-                >
-                  Auf die Warteliste
-                </a>
+              <div className="mt-10 flex flex-wrap gap-4 animate-fade-in-up delay-200">
+                <HeroWaitlistButton />
                 <a
                   href="#rechner"
                   className="rounded-xl border border-slate-200 bg-white px-8 py-4 text-base font-semibold text-slate-700 transition hover:border-slate-300 hover:bg-slate-50"
@@ -66,31 +43,16 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="relative mx-auto w-full max-w-lg lg:max-w-none space-y-6">
-               {/* Main Product Image */}
-               <div className="relative overflow-hidden rounded-2xl bg-slate-100 shadow-lg">
-                  <div className="aspect-video relative">
-                    <Image 
-                        src="/U-Check-Produktfoto.png" 
-                        alt="U-Check Messgerät am Fenster" 
-                        fill 
-                        className="object-cover"
-                        quality={100}
-                    />
-                  </div>
-               </div>
-               
-               {/* 3D View */}
-               <div className="relative overflow-hidden rounded-2xl bg-slate-100 shadow-lg w-2/3 ml-auto -mt-12 border-4 border-white">
-                  <div className="aspect-video relative">
-                    <Image 
-                        src="/U-Check-Produktfoto-3D-Ansicht.png" 
-                        alt="U-Check 3D Ansicht" 
-                        fill 
-                        className="object-cover"
-                        quality={100}
-                    />
-                  </div>
+            <div className="relative mx-auto w-full max-w-lg lg:max-w-none animate-fade-in-up delay-300 flex justify-center lg:justify-end pointer-events-none select-none">
+               <div className="relative w-full h-[180px] sm:h-[350px] lg:h-[450px]">
+                 <Image 
+                     src="/u-check-Produkfoto-3D-Frontal.PNG" 
+                     alt="U-Check Frontalansicht" 
+                     fill 
+                     className="object-contain drop-shadow-2xl"
+                     quality={100}
+                     priority
+                 />
                </div>
             </div>
           </div>
@@ -98,60 +60,75 @@ export default function Home() {
       </section>
 
       {/* 2) Problem Section */}
-      <section id="problem" className="bg-slate-50 py-20">
+      <section id="problem" className="bg-slate-50 py-24 md:py-32">
         <div className="mx-auto max-w-3xl px-6">
-          <h2 className="font-heading text-3xl font-bold text-slate-900 md:text-4xl">
-            Das Problem: Fenster sind teuer – und der Ist-Zustand ist oft unbekannt.
-          </h2>
+          <FadeIn>
+            <h2 className="font-heading text-3xl font-bold tracking-tight text-slate-900 md:text-4xl leading-tight">
+              Das Problem: Fenster sind teuer – und der Ist-Zustand ist oft unbekannt.
+            </h2>
+          </FadeIn>
           
-          <div className="mt-8 space-y-6 text-lg text-slate-600">
-            <p>
-              Bei Bestandsgebäuden ist der energetische Zustand einzelner Fenster in der Regel nicht gemessen, sondern abgeleitet. In der Praxis wird der U-Wert häufig aus Baujahr, Typbezeichnungen oder typischen Katalogwerten geschätzt. Damit entsteht eine systematische Unsicherheit genau an der Stelle, an der über Investitionen in Höhe von mehreren tausend Euro entschieden wird.
-            </p>
-            <p>
-              Verglasungen können altern: Gasfüllungen können sich verändern, Beschichtungen können degradieren. Solche Effekte sind für Nutzerinnen und Nutzer oft nicht sichtbar, können aber energetisch relevant sein. Das führt dazu, dass „ähnlich aussehende“ Fenster in der Realität sehr unterschiedliche U-Werte besitzen können.
-            </p>
-            <p>
-              Diese Unsicherheit hat Konsequenzen: Intakte Verglasungen werden ersetzt, obwohl der energetische Nutzen gering ist, während tatsächlich schwache Verglasungen im Bestand bleiben. Eine Messung des Ist-U-Werts verschiebt die Entscheidung von „Glauben und Erfahrung“ hin zu „Daten und Begründbarkeit“.
-            </p>
-          </div>
+          <FadeIn delay={200}>
+            <div className="mt-10 space-y-8 text-lg leading-relaxed text-slate-600 md:text-xl md:leading-relaxed">
+              <p>
+                Im Bestand entscheiden Eigentümer, Energieberatung und Planung häufig auf Basis von Tabellenwerten oder Baujahrannahmen. Diese sind oft zu ungenau, da Alterungseffekte nicht berücksichtigt werden.
+              </p>
+              <p>
+                Bei Bestandsgebäuden ist der energetische Zustand einzelner Fenster in der Regel nicht gemessen, sondern abgeleitet. In der Praxis wird der <span className="whitespace-nowrap">U-Wert</span> häufig aus Baujahr, Typbezeichnungen oder typischen Katalogwerten geschätzt. Damit entsteht eine systematische Unsicherheit genau an der Stelle, an der über Investitionen in Höhe von mehreren tausend Euro entschieden wird.
+              </p>
+              <p>
+                Verglasungen können altern: Gasfüllungen können sich verändern, Beschichtungen können degradieren. Solche Effekte sind für Nutzerinnen und Nutzer oft nicht sichtbar, können aber energetisch relevant sein. Das führt dazu, dass „ähnlich aussehende“ Fenster in der Realität sehr unterschiedliche <span className="whitespace-nowrap">U-Werte</span> besitzen können.
+              </p>
+              <p>
+                Diese Unsicherheit hat Konsequenzen: Intakte Verglasungen werden ersetzt, obwohl der energetische Nutzen gering ist, während tatsächlich schwache Verglasungen im Bestand bleiben. Eine Messung des Ist-<span className="whitespace-nowrap">U-Werts</span> verschiebt die Entscheidung von „Glauben und Erfahrung“ hin zu „Daten und Begründbarkeit“.
+              </p>
+            </div>
+          </FadeIn>
         </div>
       </section>
 
       {/* 3) Relevanz Section */}
-      <section className="py-20">
+      <section className="py-24 md:py-32">
         <div className="mx-auto max-w-3xl px-6">
-          <h2 className="font-heading text-3xl font-bold text-slate-900 md:text-4xl">
-            U-Wert ist nicht Theorie: Er übersetzt sich direkt in Kosten.
-          </h2>
+          <FadeIn>
+            <h2 className="font-heading text-3xl font-bold tracking-tight text-slate-900 md:text-4xl leading-tight">
+              <span className="whitespace-nowrap">U-Wert</span> ist nicht Theorie: Er übersetzt sich direkt in Kosten.
+            </h2>
+          </FadeIn>
           
-          <div className="mt-8 space-y-6 text-lg text-slate-600">
-            <p>
-              Der U-Wert beschreibt, wie stark ein Bauteil Wärme bei einer Temperaturdifferenz durchlässt. Für Verglasungen bedeutet das: Je höher der U-Wert, desto größer der Wärmeverlust in Heizperioden. Die entscheidende Größe in der Praxis ist nicht nur „U-Wert“, sondern „U-Wert im konkreten Gebäude“ – mit realen Temperaturen, realer Nutzung und realen Energiepreisen.
-            </p>
-            <p>
-              Aus Nutzerperspektive ist die Frage fast immer: „Was bringt eine Verbesserung in Euro pro Jahr und wie lange dauert es, bis sich die Investition amortisiert?“
-            </p>
-          </div>
+          <FadeIn delay={200}>
+            <div className="mt-10 space-y-8 text-lg leading-relaxed text-slate-600 md:text-xl md:leading-relaxed">
+              <p>
+                Der <span className="whitespace-nowrap">U-Wert</span> beschreibt, wie stark ein Bauteil Wärme bei einer Temperaturdifferenz durchlässt. Für Verglasungen bedeutet das: Je höher der <span className="whitespace-nowrap">U-Wert</span>, desto größer der Wärmeverlust in Heizperioden. Die entscheidende Größe in der Praxis ist nicht nur „<span className="whitespace-nowrap">U-Wert</span>“, sondern „<span className="whitespace-nowrap">U-Wert</span> im konkreten Gebäude“ – mit realen Temperaturen, realer Nutzung und realen Energiepreisen.
+              </p>
+              <p>
+                Aus Nutzerperspektive ist die Frage fast immer: „Was bringt eine Verbesserung in Euro pro Jahr und wie lange dauert es, bis sich die Investition amortisiert?“
+              </p>
+            </div>
+          </FadeIn>
         </div>
       </section>
 
       {/* 4) Lösung Section */}
-      <section id="loesung" className="bg-slate-900 py-20 text-white">
+      <section id="loesung" className="bg-slate-900 py-24 md:py-32 text-white">
         <div className="mx-auto max-w-7xl px-6">
           <div className="max-w-3xl">
-            <h2 className="font-heading text-3xl font-bold md:text-4xl">
-              Die Lösung: U-Check misst den Ist-U-Wert von Verglasungen vor Ort.
-            </h2>
-            <p className="mt-6 text-lg text-slate-300">
-              U-Check ist ein mobiles Messsystem, das den energetischen Zustand von 2-fach und 3-fach Verglasungen im Bestand bewertet. Ziel ist ein Ergebnis, das in der Praxis nachvollziehbar ist: Messdaten, Einordnung und ein klarer, reproduzierbarer Ablauf.
-            </p>
-            <p className="mt-4 text-slate-400">
-              Das System nutzt ein komplexes physikalisches Modell, um aus den dynamischen Reaktionen der Verglasung auf Temperaturänderungen den U-Wert zu bestimmen. Dabei werden reale Randbedingungen berücksichtigt, statt nur ideale Laborbedingungen anzunehmen.
-            </p>
+            <FadeIn>
+              <h2 className="font-heading text-3xl font-bold tracking-tight md:text-4xl leading-tight">
+                Die Lösung: <span className="whitespace-nowrap">U-Check</span> misst den Ist-<span className="whitespace-nowrap">U-Wert</span> von Verglasungen vor Ort.
+              </h2>
+            </FadeIn>
+            <FadeIn delay={200}>
+              <p className="mt-10 text-lg leading-relaxed text-slate-300 md:text-xl md:leading-relaxed">
+                <span className="whitespace-nowrap">U-Check</span> ist ein mobiles Messsystem, das den energetischen Zustand von 2-fach und 3-fach Verglasungen im Bestand bewertet. Ziel ist ein Ergebnis, das in der Praxis nachvollziehbar ist: Messdaten, Einordnung und ein klarer, reproduzierbarer Ablauf.
+              </p>
+              <p className="mt-6 text-lg leading-relaxed text-slate-400 md:text-xl md:leading-relaxed">
+                Das System nutzt ein komplexes physikalisches Modell, um aus den dynamischen Reaktionen der Verglasung auf Temperaturänderungen den <span className="whitespace-nowrap">U-Wert</span> zu bestimmen. Dabei werden reale Randbedingungen berücksichtigt, statt nur ideale Laborbedingungen anzunehmen.
+              </p>
+            </FadeIn>
           </div>
 
-          <div className="mt-12 grid gap-8 md:grid-cols-3">
+          <div className="mt-16 grid gap-8 md:grid-cols-3">
             {[
               {
                 title: "Schneller, reproduzierbarer Aufbau",
@@ -166,10 +143,12 @@ export default function Home() {
                 desc: "Ausgabe nicht nur als Zahl, sondern als Ergebnis mit plausibler Interpretation und Dokumentation."
               }
             ].map((feature, i) => (
-              <div key={i} className="rounded-2xl bg-slate-800 p-8 transition hover:bg-slate-700">
-                <h3 className="font-heading text-xl font-bold text-white">{feature.title}</h3>
-                <p className="mt-4 text-slate-400">{feature.desc}</p>
-              </div>
+              <FadeIn key={i} delay={i * 150 + 300} className="h-full">
+                <div className="rounded-2xl bg-slate-800 p-8 transition hover:bg-slate-700 h-full">
+                  <h3 className="font-heading text-2xl font-bold text-white">{feature.title}</h3>
+                  <p className="mt-4 text-lg leading-relaxed text-slate-400">{feature.desc}</p>
+                </div>
+              </FadeIn>
             ))}
           </div>
         </div>
@@ -178,9 +157,11 @@ export default function Home() {
       {/* 5) So funktioniert's */}
       <section className="py-20">
         <div className="mx-auto max-w-7xl px-6">
-          <h2 className="font-heading text-center text-3xl font-bold text-slate-900 md:text-4xl">
-            Ablauf: Anbringen – Messen – Auswerten.
-          </h2>
+          <FadeIn>
+            <h2 className="font-heading text-center text-3xl font-bold text-slate-900 md:text-4xl">
+              Ablauf: Anbringen – Messen – Auswerten.
+            </h2>
+          </FadeIn>
           
           <div className="mt-16 grid gap-12 md:grid-cols-3">
             {[
@@ -197,16 +178,18 @@ export default function Home() {
               {
                 step: "3",
                 title: "Auswerten",
-                desc: "Die Auswertung identifiziert die relevanten Parameter eines physikalischen Modells und leitet daraus den U-Wert ab."
+                desc: <>Die Auswertung identifiziert die relevanten Parameter eines physikalischen Modells und leitet daraus den <span className="whitespace-nowrap">U-Wert</span> ab.</>
               }
             ].map((item, i) => (
-              <div key={i} className="relative text-center">
-                <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-blue-50 text-2xl font-bold text-[var(--uc-blue)]">
-                  {item.step}
+              <FadeIn key={i} delay={i * 200} className="h-full">
+                <div className="relative text-center h-full">
+                  <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-blue-50 text-2xl font-bold text-[var(--uc-blue)]">
+                    {item.step}
+                  </div>
+                  <h3 className="mt-6 text-xl font-bold text-slate-900">{item.title}</h3>
+                  <p className="mt-4 text-slate-600">{item.desc}</p>
                 </div>
-                <h3 className="mt-6 text-xl font-bold text-slate-900">{item.title}</h3>
-                <p className="mt-4 text-slate-600">{item.desc}</p>
-              </div>
+              </FadeIn>
             ))}
           </div>
         </div>
@@ -220,10 +203,10 @@ export default function Home() {
             <div>
                 <div className="max-w-3xl mb-8">
                     <h2 className="font-heading text-3xl font-bold text-slate-900">
-                        Was bringt ein besserer U-Wert in Euro pro Jahr?
+                        Was bringt ein besserer <span className="whitespace-nowrap">U-Wert</span> in Euro pro Jahr?
                     </h2>
                     <p className="mt-4 text-slate-600">
-                        Dieser Rechner zeigt, wie sich U-Wert, Fläche und Standortkennwerte in jährliche Energie- und Kosteneffekte übersetzen. Er dient als Orientierung und macht transparent, warum der Ist-U-Wert der entscheidende Unsicherheitsfaktor ist.
+                        Dieser Rechner zeigt, wie sich <span className="whitespace-nowrap">U-Wert</span>, Fläche und Standortkennwerte in jährliche Energie- und Kosteneffekte übersetzen. Er dient als Orientierung und macht transparent, warum der Ist-<span className="whitespace-nowrap">U-Wert</span> der entscheidende Unsicherheitsfaktor ist.
                     </p>
                 </div>
                 <div className="w-full">
@@ -395,33 +378,22 @@ export default function Home() {
       </section>
 
       {/* 12) Warteliste */}
-      <section id="warteliste" className="py-12 md:py-20">
+      <section id="warteliste" className="py-12 md:py-20 bg-slate-50">
         <div className="mx-auto max-w-xl px-6 text-center">
-            <h2 className="font-heading text-3xl font-bold text-slate-900">
-                Zum Produktstart informiert werden.
-            </h2>
-            <p className="mt-4 text-slate-600">
-                Tragen Sie sich ein und erhalten Sie zum Launch eine kurze Information mit Verfügbarkeit und den wichtigsten Eckdaten. Wir senden wenige Nachrichten und verzichten auf unnötige Daten.
-            </p>
-            
-            <div className="mt-10 bg-white rounded-2xl shadow-xl border border-slate-100 overflow-hidden">
-                <div className="p-6 bg-slate-50 border-b border-slate-100">
-                    <h3 className="font-bold text-slate-900">U-Check Warteliste</h3>
-                </div>
-                <div className="p-6">
-                    <iframe
-                        width="100%"
-                        height="450"
-                        src={BREVO_IFRAME_SRC}
-                        frameBorder="0"
-                        scrolling="auto"
-                        style={{ display: "block", marginLeft: "auto", marginRight: "auto", maxWidth: "100%" }}
-                    ></iframe>
-                </div>
-            </div>
-            <p className="mt-4 text-xs text-slate-400">
-                Sie können sich jederzeit abmelden. Datenschutz: <a href="/datenschutz" className="underline">u-check.online/datenschutz</a>
-            </p>
+            <FadeIn>
+              <h2 className="font-heading text-3xl font-bold text-slate-900">
+                  Zum Produktstart informiert werden.
+              </h2>
+              <p className="mt-4 text-slate-600">
+                  Tragen Sie sich ein und erhalten Sie zum Launch eine kurze Information mit Verfügbarkeit und den wichtigsten Eckdaten. Wir senden wenige Nachrichten und verzichten auf unnötige Daten.
+              </p>
+              
+              <WaitlistSectionButton />
+
+              <p className="mt-8 text-xs text-slate-400">
+                  Sie können sich jederzeit abmelden. Datenschutz: <a href="/datenschutz" className="underline">u-check.online/datenschutz</a>
+              </p>
+            </FadeIn>
         </div>
       </section>
 

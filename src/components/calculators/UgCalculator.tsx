@@ -117,13 +117,13 @@ export default function UgCalculator() {
         Als transparente Referenz: Wie stark beeinflussen Annahmen das Ergebnis?
       </p>
 
-      <div className="mt-6 space-y-5">
+      <div className="mt-6 grid grid-cols-2 gap-4">
         <div>
-          <label className="mb-2 block text-xs font-medium text-slate-500">Verglasung</label>
-          <div className="flex gap-2">
+          <label className="mb-1 block text-[10px] font-medium text-slate-500 uppercase tracking-wider">Verglasung</label>
+          <div className="flex gap-1">
             <button
               onClick={() => setPanes(2)}
-              className={`flex-1 rounded-lg border px-3 py-2 text-sm font-medium transition ${
+              className={`flex-1 rounded border px-2 py-1 text-base md:text-sm font-medium transition ${
                 panes === 2
                   ? "border-[var(--uc-blue)] bg-blue-50 text-[var(--uc-blue)]"
                   : "border-slate-200 text-slate-600 hover:border-slate-300"
@@ -133,7 +133,7 @@ export default function UgCalculator() {
             </button>
             <button
               onClick={() => setPanes(3)}
-              className={`flex-1 rounded-lg border px-3 py-2 text-sm font-medium transition ${
+              className={`flex-1 rounded border px-2 py-1 text-base md:text-sm font-medium transition ${
                 panes === 3
                   ? "border-[var(--uc-blue)] bg-blue-50 text-[var(--uc-blue)]"
                   : "border-slate-200 text-slate-600 hover:border-slate-300"
@@ -145,47 +145,52 @@ export default function UgCalculator() {
         </div>
 
         <div>
-          <label className="mb-2 block text-xs font-medium text-slate-500">Gasfüllung</label>
+          <label className="mb-1 block text-[10px] font-medium text-slate-500 uppercase tracking-wider">Gasfüllung</label>
           <select
             value={gas}
             onChange={(e) => setGas(e.target.value as "air" | "argon" | "krypton")}
-            className="w-full rounded-lg border border-slate-200 px-3 py-2 text-sm text-slate-700"
+            className="w-full rounded border border-slate-200 px-2 py-1 text-base md:text-sm text-slate-700 focus:border-[var(--uc-blue)] focus:outline-none"
           >
             <option value="air">Luft</option>
-            <option value="argon">Argon (Standard)</option>
-            <option value="krypton">Krypton (Edel)</option>
+            <option value="argon">Argon</option>
+            <option value="krypton">Krypton</option>
           </select>
         </div>
 
         <div>
-          <label className="mb-1 block text-xs font-medium text-slate-500">
-            Scheibenzwischenraum (SZR): {szr} mm
+          <label className="mb-1 block text-[10px] font-medium text-slate-500 uppercase tracking-wider">
+            SZR [mm]
           </label>
           <input
-            type="range"
+            type="number"
             min="6"
             max="24"
+            step="1"
             value={szr}
             onChange={(e) => setSzr(Number(e.target.value))}
-            className="h-2 w-full cursor-pointer appearance-none rounded-lg bg-slate-200 accent-[var(--uc-pink)]"
+            className="w-full rounded border border-slate-200 px-2 py-1 text-base md:text-sm text-slate-700 focus:border-[var(--uc-blue)] focus:outline-none"
           />
         </div>
 
-        <div className="flex items-center justify-between rounded-lg border border-slate-100 p-3">
-          <span className="text-sm text-slate-700">Low-E Beschichtung?</span>
-          <button
-            onClick={() => setLowE(!lowE)}
-            className={`relative h-6 w-11 rounded-full transition ${
-              lowE ? "bg-[var(--uc-blue)]" : "bg-slate-300"
-            }`}
-          >
-            <span
-              className={`absolute left-1 top-1 h-4 w-4 rounded-full bg-white transition ${
-                lowE ? "translate-x-5" : "translate-x-0"
-              }`}
-            />
-          </button>
+        <div>
+          <label className="mb-1 block text-[10px] font-medium text-slate-500 uppercase tracking-wider">Low-E</label>
+          <div className="flex items-center h-[30px]">
+             <button
+                onClick={() => setLowE(!lowE)}
+                className={`relative h-6 w-11 rounded-full transition ${
+                  lowE ? "bg-[var(--uc-blue)]" : "bg-slate-300"
+                }`}
+              >
+                <span
+                  className={`absolute left-1 top-1 h-4 w-4 rounded-full bg-white transition ${
+                    lowE ? "translate-x-5" : "translate-x-0"
+                  }`}
+                />
+              </button>
+              <span className="ml-2 text-xs text-slate-600">{lowE ? "Ja" : "Nein"}</span>
+          </div>
         </div>
+      </div>
 
         <div className="mt-6 relative overflow-hidden rounded-xl bg-slate-900 p-5 text-center text-white">
           {/* Particles Background */}
@@ -268,7 +273,6 @@ export default function UgCalculator() {
                 </div>
             )}
         </div>
-      </div>
     </div>
   );
 }
